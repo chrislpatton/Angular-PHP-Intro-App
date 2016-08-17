@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="funWithCountries">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular-PHP</title>
+  
+</head>
+<body>
+  
+  <h1>Fun with Countries</h1>
+
+  <div ng-controller="CountryController">
+    <ul>
+      <li ng-repeat="country in countries">
+        <img ng-src="{{country.flag}}">
+        {{country.name}}  
+        <ul ng-show="country.states.length > 0">
+          <li ng-repeat="state in country.states">{{state.name}}</li>
+        </ul>
+      </li>  
+    </ul>
+  </div>
+  
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
