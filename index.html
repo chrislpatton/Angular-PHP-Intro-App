@@ -9,15 +9,21 @@
   
   <h1>Fun with Countries</h1>
 
-  <div ng-controller="CountryController">
+  <div ng-controller="CountryController as countryCtrl">
     <ul>
-      <li ng-repeat="country in countries">
+      <li ng-repeat="country in countryCtrl.countries">
         <img ng-src="{{country.flag}}">
-        {{country.name}}  
-        <ul ng-show="country.states.length > 0">
-          <li ng-repeat="state in country.states">{{state.name}}</li>
-        </ul>
-      </li>  
+          {{country.name}}  
+        
+          <div ng-controller="StateController as stateCtrl">
+            <ul ng-show="country.states.length > 0">
+              <li ng-repeat="state in country.states">{{state.name}}
+              </li>
+            </ul>
+            <input type="text" name="state" ng-model="stateCtrl.newState"> 
+            <a href ng-click="stateCtrl.addStateTo(country)">Add State {{stateCtrl.newState}}</a>
+          </div>
+      </li> 
     </ul>
   </div>
   
